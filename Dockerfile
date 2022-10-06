@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 as base
+FROM arm64v8/ubuntu:18.04 
 
 RUN apt update
 RUN apt install -y ca-certificates
