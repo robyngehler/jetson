@@ -9,6 +9,11 @@ set -e
 
 BSP=https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t210/jetson-210_linux_r32.6.1_aarch64.tbz2
 
+# set environment variables
+export JETSON_BUILD_DIR=/$USER/home
+export JETSON_ROOTFS_DIR=/tmp/jetson-builder/rootfs
+export JETSON_NANO_BOARD=jetson-nano
+
 # Check if the user is not root
 if [ "x$(whoami)" != "xroot" ]; then
         printf "\e[31mThis script requires root privilege\e[0m\n"
