@@ -13,6 +13,7 @@ BSP=https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/t210/jetson-210_l
 export JETSON_BUILD_DIR=/$USER/home
 export JETSON_ROOTFS_DIR=/tmp/jetson-builder/rootfs
 export JETSON_NANO_BOARD=jetson-nano
+export sd_size = 32G
 
 # Check if the user is not root
 if [ "x$(whoami)" != "xroot" ]; then
@@ -77,7 +78,7 @@ case "$JETSON_NANO_BOARD" in
         nano_board_revision=${JETSON_NANO_REVISION:=300}
         printf "Creating image for Jetson nano board (%s revision)... " $nano_board_revision
         ROOTFS_DIR=$JETSON_ROOTFS_DIR $JETSON_BUILD_DIR/Linux_for_Tegra/tools/jetson-disk-image-creator.sh \
-            -o jetson.img -b jetson-nano -r $nano_board_revision
+            -o jetson.img -s $sd_size -b jetson-nano -r $nano_board_revision
         printf "[OK]\n"
         ;;
 
